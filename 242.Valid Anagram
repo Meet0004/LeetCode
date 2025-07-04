@@ -1,0 +1,29 @@
+import java.util.*;
+
+class Solution {
+    public boolean isAnagram(String s, String t) {
+        if(s.length() != t.length()) return false;
+        int[] count = new int[26];
+        // ek array me s ke chars ko + kia, t ke char ko - kiya, overall sum 0 aya toh anagram karke 
+        for(int i=0; i<s.length(); i++){
+          count[s.charAt(i) - 'a']++; //reduces ASCII and makes it in range of 0-25 mtlb a-a = 65-65
+          count[t.charAt(i) - 'a']--;
+        }
+        // check sum OR koi bhi -1/+1 hai kya check kare i.e not 0
+        int sum=0;
+        for(int i : count){
+          if(i !=0) return false;
+        }
+        return true;
+    }
+
+    public static void main(String[] args) {
+        Solution s = new Solution();
+        
+        String str1 = "listen";
+        String str2 = "silent";
+
+        boolean ans = s.isAnagram(str1, str2);
+        System.out.println(ans); // true
+    }
+}
