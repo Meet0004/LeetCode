@@ -1,0 +1,22 @@
+import java.util.*;
+
+class Solution {
+    public boolean containsDuplicate(int[] nums) {
+        HashSet<Integer> seenNums = new HashSet<>(); //cz sets dont conatin duplicatessss
+        for(int num: nums){
+            if(seenNums.contains(num))  //agar already set me hai uska matlb dup hua hai
+                return true;
+            seenNums.add(num); // agar ni hai toh add kardo taaki aage pata chale
+        }
+        return false;
+    }
+
+    public static void main(String[] args) {
+        Solution s = new Solution();
+        
+        int[] nums = {1, 2, 3, 4, 1};
+        
+        boolean ans = s.containsDuplicate(nums);
+        System.out.println(ans); // true
+    }
+}
